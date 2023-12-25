@@ -280,8 +280,8 @@ function reverseString(str) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  return str.split('').sort().join('');
 }
 
 /**
@@ -296,8 +296,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -314,8 +314,14 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+  const arr = str.split('');
+  let res = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    if (vowels.includes(arr[i])) res += 1;
+  }
+  return res;
 }
 
 /**
@@ -331,8 +337,24 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  return (
+    str
+      .toLowerCase()
+      .replace('!', '')
+      .replace('?', '')
+      .replaceAll(',', '')
+      .replaceAll(' ', '') ===
+    str
+      .toLowerCase()
+      .replace('!', '')
+      .replace('?', '')
+      .replaceAll(',', '')
+      .replaceAll(' ', '')
+      .split('')
+      .reverse()
+      .join('')
+  );
 }
 
 /**
@@ -347,8 +369,16 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const arr = sentence.split(' ');
+  let current = arr[0];
+
+  for (let i = 0; i < arr.length; i += 1) {
+    if (current.length < arr[i].length) {
+      current = arr[i];
+    }
+  }
+  return current;
 }
 
 /**
